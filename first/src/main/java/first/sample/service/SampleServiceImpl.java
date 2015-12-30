@@ -17,7 +17,8 @@ public class SampleServiceImpl implements SampleService{
     
     @Resource(name="sampleDAO")
     private SampleDAO sampleDAO;
-     
+      
+    
     @Override
     public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception {
         return sampleDAO.selectBoardList(map);
@@ -30,7 +31,6 @@ public class SampleServiceImpl implements SampleService{
     
     @Override
     public Map<String, Object> selectBoardDetail(Map<String, Object> map) throws Exception {
-        sampleDAO.updateHitCnt(map);
         Map<String, Object> resultMap = sampleDAO.selectBoardDetail(map);
         return resultMap;
     }

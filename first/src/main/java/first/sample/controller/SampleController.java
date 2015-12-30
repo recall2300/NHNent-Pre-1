@@ -18,7 +18,7 @@ import first.sample.service.SampleService;
 @Controller
 public class SampleController {
 	Logger log = Logger.getLogger(this.getClass());
-    
+	
     @Resource(name="sampleService")
     private SampleService sampleService;
      
@@ -89,7 +89,7 @@ public class SampleController {
          
         sampleService.updateBoard(commandMap.getMap());
          
-        mv.addObject("IDX", commandMap.get("IDX"));
+        mv.addObject("idx", commandMap.get("idx"));
         return mv;
     }
     

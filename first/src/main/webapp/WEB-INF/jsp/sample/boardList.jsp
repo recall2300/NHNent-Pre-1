@@ -5,19 +5,19 @@
 <%@ include file="/WEB-INF/include/include-header.jspf" %>
 </head>
 <body>
-    <h2>게시판 목록</h2>
+    <h2>방-명-록</h2>
     <table class="board_list">
         <colgroup>
             <col width="10%"/>
-            <col width="*"/>
             <col width="15%"/>
+            <col width="*%"/>
             <col width="20%"/>
         </colgroup>
         <thead>
             <tr>
                 <th scope="col">글번호</th>
-                <th scope="col">제목</th>
-                <th scope="col">조회수</th>
+                <th scope="col">email</th>
+                <th scope="col">내용</th>
                 <th scope="col">작성일</th>
             </tr>
         </thead>
@@ -26,13 +26,16 @@
                 <c:when test="${fn:length(list) > 0}">
                     <c:forEach items="${list }" var="row">
                         <tr>
-                            <td>${row.IDX }</td>
-                            <td class="title">
-                                <a href="#this" name="title">${row.TITLE }</a>
-                                <input type="hidden" id="IDX" value="${row.IDX }">
+                            <td>${row.idx }</td>
+                            <td>${row.email }</td>
+                            
+                            <td class="contents">
+                                 <a href="#this" name="contents">${row.contents }</a>
+                                <input type="hidden" id="idx" value="${row.idx }">
                             </td>
-                            <td>${row.HIT_CNT }</td>
-                            <td>${row.CREA_DTM }</td>
+                            
+                            <!--  <td>${row.contents }</td>-->
+                            <td>${row.writetime }</td>
                         </tr>
                     </c:forEach>
                 </c:when>
@@ -55,7 +58,7 @@
                 fn_openBoardWrite();
             }); 
              
-            $("a[name='title']").on("click", function(e){ //제목 
+            $("a[name='contents']").on("click", function(e){ //제목 
                 e.preventDefault();
                 fn_openBoardDetail($(this));
             });
@@ -71,9 +74,16 @@
         function fn_openBoardDetail(obj){
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/sample/openBoardDetail.do' />");
-            comSubmit.addParam("IDX", obj.parent().find("#IDX").val());
+            comSubmit.addParam("idx", obj.parent().find("#idx").val());
             comSubmit.submit();
         }
     </script> 
+    
+    
+    
+    
+    
+    
+    
 </body>
 </html>

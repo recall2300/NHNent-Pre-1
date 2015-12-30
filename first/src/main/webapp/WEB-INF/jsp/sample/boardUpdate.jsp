@@ -8,37 +8,31 @@
     <form id="frm">
         <table class="board_view">
             <colgroup>
+                <col width="12%"/>
+                <col width="8%"/>
+                <col width="10%"/>
+                <col width="20%"/>
                 <col width="15%"/>
-                <col width="35%"/>
-                <col width="15%"/>
-                <col width="35%"/>
+                <col width="*%"/>
             </colgroup>
-            <caption>게시글 상세</caption>
+            <caption>방명록 수정</caption>
+                 
             <tbody>
                 <tr>
                     <th scope="row">글 번호</th>
                     <td>
-                        ${map.IDX }
-                        <input type="hidden" id="IDX" name="IDX" value="${map.IDX }">
+                        ${map.idx }
+                        <input type="hidden" id="idx" name="idx" value="${map.idx }">
                     </td>
-                    <th scope="row">조회수</th>
-                    <td>${map.HIT_CNT }</td>
+                    <th scope="row">이메일</th>
+               		<td>${map.email }</td>
+               		<th scope="row">비밀번호</th>
+                    <td><input type="password" id="pass" name="pass" class="wdp_90"></input></td>
+               		
                 </tr>
                 <tr>
-                    <th scope="row">작성자</th>
-                    <td>${map.CREA_ID }</td>
-                    <th scope="row">작성시간</th>
-                    <td>${map.CREA_DTM }</td>
-                </tr>
-                <tr>
-                    <th scope="row">제목</th>
-                    <td colspan="3">
-                        <input type="text" id="TITLE" name="TITLE" class="wdp_90" value="${map.TITLE }"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4" class="view_text">
-                        <textarea rows="20" cols="100" title="내용" id="CONTENTS" name="CONTENTS">${map.CONTENTS }</textarea>
+                    <td colspan="6" class="view_text">
+                        <textarea rows="20" cols="100" title="내용" id="contents" name="contents">${map.contents }</textarea>
                     </td>
                 </tr>
             </tbody>
@@ -83,7 +77,7 @@
         function fn_deleteBoard(){
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/sample/deleteBoard.do' />");
-            comSubmit.addParam("IDX", $("#IDX").val());
+            comSubmit.addParam("idx", $("#idx").val());
             comSubmit.submit();
              
         }

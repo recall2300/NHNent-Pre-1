@@ -7,31 +7,26 @@
 <body>
     <table class="board_view">
         <colgroup>
+            <col width="12%"/>
+            <col width="8%"/>
+            <col width="10%"/>
+            <col width="20%"/>
             <col width="15%"/>
-            <col width="35%"/>
-            <col width="15%"/>
-            <col width="35%"/>
+            <col width="*"/>
+            
         </colgroup>
         <caption>게시글 상세</caption>
         <tbody>
             <tr>
                 <th scope="row">글 번호</th>
-                <td>${map.TITLE }</td>
-                <th scope="row">조회수</th>
-                <td>${map.HIT_CNT }</td>
-            </tr>
-            <tr>
-                <th scope="row">작성자</th>
-                <td>${map.CREA_ID }</td>
+                <td>${map.idx }</td>
+                <th scope="row">이메일</th>
+                <td>${map.email }</td>
                 <th scope="row">작성시간</th>
-                <td>${map.CREA_DTM }</td>
+                <td>${map.writetime }</td>
             </tr>
             <tr>
-                <th scope="row">제목</th>
-                <td colspan="3">${map.TITLE }</td>
-            </tr>
-            <tr>
-                <td colspan="4">${map.CONTENTS }</td>
+                <td colspan="6">${map.contents }</td>
             </tr>
         </tbody>
     </table>
@@ -60,10 +55,10 @@
         }
          
         function fn_openBoardUpdate(){
-            var idx = "${map.IDX}";
+            var idx = "${map.idx}";
             var comSubmit = new ComSubmit();
             comSubmit.setUrl("<c:url value='/sample/openBoardUpdate.do' />");
-            comSubmit.addParam("IDX", idx);
+            comSubmit.addParam("idx", idx);
             comSubmit.submit();
         }
     </script>
