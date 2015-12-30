@@ -59,11 +59,10 @@
 	    <![CDATA[
 	        UPDATE guestbook_table
 	        SET
-	        	pass = #{pass},
 	            contents = #{contents},
 	            modifytime = now()
 	        WHERE
-	            idx = #{idx}    
+	            idx = #{idx}
 	    ]]>
 	</update>
 	

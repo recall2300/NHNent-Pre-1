@@ -41,11 +41,26 @@
 	    });
 	     
 	    $("#write").on("click", function(e){ //작성하기 버튼
-	        e.preventDefault();
-	        fn_insertBoard();
+	        if(validateEmail($("#email").val())){
+	        	e.preventDefault();
+		        fn_insertBoard();
+	        }
 	    });
 	});
 	 
+   	function validateEmail(inputText){
+   		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+   		
+   		if(mailformat.test(inputText))  
+   		{  
+   			return true;  
+   		}  
+   		else  
+   		{  
+   			alert("이메일형식!");    
+   			return false;  
+   		}
+   	} 
 	function fn_openBoardList(){
 	    var comSubmit = new ComSubmit();
 	    comSubmit.setUrl("<c:url value='/sample/openBoardList.do' />");

@@ -21,13 +21,13 @@
                 <tr>
                     <th scope="row">글 번호</th>
                     <td>
-                        ${map.idx }
+                        ${map.idx}
                         <input type="hidden" id="idx" name="idx" value="${map.idx }">
                     </td>
                     <th scope="row">이메일</th>
                		<td>${map.email }</td>
                		<th scope="row">비밀번호</th>
-                    <td><input type="password" id="pass" name="pass" class="wdp_90"></input></td>
+                    <td><input type="text" id="pass" name="pass" class="wdp_90"></input></td>
                		
                 </tr>
                 <tr>

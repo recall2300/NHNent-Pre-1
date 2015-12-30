@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import first.common.common.CommandMap;
+import first.sample.SampleEmailValidator.EmailValidator;
 import first.sample.service.SampleService;
 
 @Controller
 public class SampleController {
+	private EmailValidator emailValidator = new EmailValidator();;
 	Logger log = Logger.getLogger(this.getClass());
 	
     @Resource(name="sampleService")
@@ -50,6 +52,7 @@ public class SampleController {
     @RequestMapping(value="/sample/openBoardWrite.do")
     public ModelAndView openBoardWrite(CommandMap commandMap) throws Exception{
         ModelAndView mv = new ModelAndView("/sample/boardWrite");
+        
          
         return mv;
     }
@@ -59,7 +62,11 @@ public class SampleController {
         ModelAndView mv = new ModelAndView("redirect:/sample/openBoardList.do");
          
         sampleService.insertBoard(commandMap.getMap());
-         
+        
+        String checkmail = (String)commandMap.get("email");
+        boolean valid = emailValidator.validate(checkmail);
+		System.out.println("Email is valid : " + checkmail + " , " + valid);
+        
         return mv;
     }
     
