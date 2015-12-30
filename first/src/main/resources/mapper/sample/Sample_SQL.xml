@@ -55,6 +55,19 @@
 	    ]]>
 	</select>
 	
+	<select id="selectBoardOne" parameterType="hashmap" resultType="hashmap">
+	    <![CDATA[
+	        SELECT
+	            idx,
+	            pass,
+	            email
+	        FROM
+	            guestbook_table
+	        WHERE
+	            idx = #{idx}        
+	    ]]>
+	</select>
+	
 	<update id="updateBoard" parameterType="hashmap">
 	    <![CDATA[
 	        UPDATE guestbook_table

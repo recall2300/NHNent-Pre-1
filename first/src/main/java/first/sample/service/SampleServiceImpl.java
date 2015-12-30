@@ -35,9 +35,18 @@ public class SampleServiceImpl implements SampleService{
         return resultMap;
     }
     
-    @Override
-    public void updateBoard(Map<String, Object> map) throws Exception{
-        sampleDAO.updateBoard(map);
+    @SuppressWarnings("unchecked")
+	@Override
+    public boolean updateBoard(Map<String, Object> map) throws Exception{
+    	Map<String, Object> tempMap = (Map<String,Object>) sampleDAO.selectOne("selectBoardOne", map);
+    	
+    	if(map.get("idx").toString().equals(tempMap.get("idx").toString())){
+    		if(map.get("pass").toString().equals(tempMap.get("pass").toString())){
+    			sampleDAO.updateBoard(map);
+    			return true;
+    		}
+    	}
+    	return false;
     }
 
     @Override

@@ -27,6 +27,11 @@ public class SampleDAO extends AbstractDAO {
 	public void updateBoard(Map<String, Object> map) throws Exception{
 	    update("sample.updateBoard", map);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> selectOne(Map<String, Object> map)throws Exception{
+		return (Map<String, Object>) selectOne("sample.selectBoardOne", map);
+	}
 
 	public void deleteBoard(Map<String, Object> map) throws Exception{
 	    update("sample.deleteBoard", map);

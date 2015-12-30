@@ -94,7 +94,9 @@ public class SampleController {
     public ModelAndView updateBoard(CommandMap commandMap) throws Exception{
         ModelAndView mv = new ModelAndView("redirect:/sample/openBoardDetail.do");
          
-        sampleService.updateBoard(commandMap.getMap());
+        if(!sampleService.updateBoard(commandMap.getMap())){
+        	mv = new ModelAndView("/sample/alert");
+        }
          
         mv.addObject("idx", commandMap.get("idx"));
         return mv;
